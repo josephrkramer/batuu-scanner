@@ -1,5 +1,5 @@
 /// <reference types="offscreencanvas" />
-declare class QrScanner {
+export declare class QrScanner {
     static readonly DEFAULT_CANVAS_SIZE = 400;
     static readonly NO_QR_CODE_FOUND = "No QR code found";
     private static _disableBarcodeDetector;
@@ -137,4 +137,9 @@ declare global {
         };
     }
 }
-export default QrScanner;
+export declare class CrateDecoder {
+    contents: Map<string, string>;
+    constructor();
+    decode(code: string): Promise<string>;
+}
+export {};
