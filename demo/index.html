@@ -72,7 +72,7 @@
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
 <script type="module">
-    import { QrScanner, CrateScanner } from "../qr-scanner.min.js";
+    import { QrScanner, CrateDecoder } from "../qr-scanner.min.js";
 
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
@@ -88,7 +88,7 @@
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
 
-    const crateDecoder = new CrateScanner();
+    const crateDecoder = new CrateDecoder();
 
     function setResult(label, result) {
         console.log(result.data);
