@@ -631,7 +631,7 @@ class QrScanner {
         const useBarcodeDetector = !QrScanner._disableBarcodeDetector
             && 'BarcodeDetector' in window
             && BarcodeDetector.getSupportedFormats
-            && (await BarcodeDetector.getSupportedFormats()).includes('qr_code');
+            && (await BarcodeDetector.getSupportedFormats()).includes('aztec');
 
         if (!useBarcodeDetector) return createWorker();
 
@@ -653,7 +653,7 @@ class QrScanner {
                 .catch(() => true);
         if (isChromiumOnMacWithArmVentura) return createWorker();
 
-        return new BarcodeDetector({ formats: ['qr_code'] });
+        return new BarcodeDetector({ formats: ['aztec'] });
     }
 
     private _onPlay(): void {
