@@ -1266,9 +1266,9 @@ export class CrateDecoder {
         this.contents.set('CAST04', 'Resistance Coordinates [Program]');
     }
 
-    async decode(code: string): Promise<string> {
+    decode(code: string): string {
         if (this.contents.has(code)) {
-            return await this.contents.get(code)!;
+            return this.contents.get(code)!;
         } else {
             return 'Unknown contents';
         }

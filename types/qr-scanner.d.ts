@@ -140,6 +140,6 @@ declare global {
 export declare class CrateDecoder {
     contents: Map<string, string>;
     constructor();
-    decode(code: string): Promise<string>;
+    decode(code: string): string;
 }
 export {};
