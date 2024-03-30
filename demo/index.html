@@ -54,6 +54,9 @@
 <b>Last Detected QR code: </b>
 <span id="last-cam-qr-result">None</span>
 <br>
+<b>Last Crate Scanned: </b>
+<span id="last-crate-result">None</span>
+<br>
 <b>Last detected at: </b>
 <span id="cam-qr-result-timestamp"></span>
 <br>
@@ -69,7 +72,7 @@
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
 <script type="module">
-    import QrScanner from "../qr-scanner.min.js";
+    import { QrScanner, CrateDecoder } from "../qr-scanner.min.js";
 
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
@@ -80,15 +83,20 @@
     const flashState = document.getElementById('flash-state');
     const camQrResult = document.getElementById('cam-qr-result');
     const lastCamQrResult = document.getElementById('last-cam-qr-result');
+    const lastCrate = document.getElementById('last-crate-result');
     const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
+
+    const crateDecoder = new CrateDecoder();
 
     function setResult(label, result) {
         console.log(result.data);
         label.textContent = result.data;
         lastCamQrResult.textContent = result.data;
         lastCamQrResult.style.color = 'teal';
+        crateDecoder.decode(result.data).then(value => lastCrate.textContent = value);
+        lastCrate.style.color = 'teal';
         camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
