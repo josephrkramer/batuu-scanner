@@ -1268,7 +1268,7 @@ export class CrateDecoder {
 
     async decode(code: string): Promise<string> {
         if (this.contents.has(code)) {
-            return this.contents.get(code)!;
+            return await this.contents.get(code)!;
         } else {
             return 'Unknown contents';
         }
