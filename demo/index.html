@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>QR Scanner Demo</title>
+    <title>Batuu Code Scanner Demo</title>
 </head>
 <body>
-<h1>Scan from WebCam:</h1>
+<h1>Scan Batuu Code from WebCam:</h1>
 <div id="video-container">
     <video id="qr-video"></video>
 </div>
@@ -50,6 +50,10 @@
 <b>Detected QR code: </b>
 <span id="cam-qr-result">None</span>
 <br>
+<br>
+<b>Last Detected QR code: </b>
+<span id="last-cam-qr-result">None</span>
+<br>
 <b>Last detected at: </b>
 <span id="cam-qr-result-timestamp"></span>
 <br>
@@ -75,6 +79,7 @@
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
     const camQrResult = document.getElementById('cam-qr-result');
+    const lastCamQrResult = document.getElementById('last-cam-qr-result');
     const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
     const fileSelector = document.getElementById('file-selector');
     const fileQrResult = document.getElementById('file-qr-result');
@@ -82,6 +87,8 @@
     function setResult(label, result) {
         console.log(result.data);
         label.textContent = result.data;
+        lastCamQrResult.textContent = result.data;
+        lastCamQrResult.style.color = 'teal';
         camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
