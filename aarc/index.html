@@ -8,7 +8,7 @@
 <div id="logo">
     <img src="images/aarc-aurebesh.jpg" alt="AARC Logo" style="max-width: 100%;">
 </div>
-<h1 id="results-header">Scan Batuu Code from WebCam:</h1>
+<h1 id="results-header" style="display: none;">None</h1>
 <div id="video-container">
     <video id="qr-video"></video>
 </div>
@@ -67,17 +67,13 @@
 <button id="stop-button">Stop</button>
 <hr>
 
-<h1>Scan from File:</h1>
-<input type="file" id="file-selector">
-<b>Detected QR code: </b>
-<span id="file-qr-result">None</span>
-
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
 <script type="module">
     import { QrScanner, CrateDecoder } from "../qr-scanner.min.js";
 
     const logo = document.getElementById('logo');
+    const resultsHeader = document.getElementById('results-header');
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
     const camHasCamera = document.getElementById('cam-has-camera');
@@ -89,8 +85,6 @@
     const lastCamQrResult = document.getElementById('last-cam-qr-result');
     const lastCrate = document.getElementById('last-crate-result');
     const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
-    const fileSelector = document.getElementById('file-selector');
-    const fileQrResult = document.getElementById('file-qr-result');
 
     const crateDecoder = new CrateDecoder();
 
@@ -105,6 +99,9 @@
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
+
+        crateDecoder.decode(result.data).then(value => resultsHeader.textContent = value);
+        resultsHeader.style.display = 'block';
 
         scanner.stop();
     }
@@ -182,18 +179,6 @@
         logo.style.display = 'block';
         scanner.stop();
     });
-
-    // ####### File Scanning #######
-
-    fileSelector.addEventListener('change', event => {
-        const file = fileSelector.files[0];
-        if (!file) {
-            return;
-        }
-        QrScanner.scanImage(file, { returnDetailedScanResult: true })
-            .then(result => setResult(fileQrResult, result))
-            .catch(e => setResult(fileQrResult, { data: e || 'No QR code found.' }));
-    });
 </script>
 
 <style>
@@ -235,10 +220,6 @@
 
     hr {
         margin-top: 32px;
-    }
-    input[type="file"] {
-        display: block;
-        margin-bottom: 16px;
     }
 </style>
 </body>
