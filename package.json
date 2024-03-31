@@ -1,7 +1,7 @@
 {
-  "name": "qr-scanner",
+  "name": "batuu-scanner",
   "version": "1.4.2",
-  "description": "A javascript QR scanner library",
+  "description": "A javascript Aztec scanner library",
   "main": "qr-scanner.umd.min.js",
   "module": "qr-scanner.min.js",
   "types": "types/qr-scanner.d.ts",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nimiq/qr-scanner.git"
+    "url": "git+https://github.com/josephrkramer/batuu-scanner.git"
   },
   "keywords": [
     "qr",
@@ -35,12 +35,12 @@
     "fast",
     "web"
   ],
-  "author": "Nimiq (https://nimiq.com)",
+  "author": "Joseph Kramer",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nimiq/qr-scanner/issues"
+    "url": "https://github.com/josephrkramer/batuu-scanner/issues"
   },
-  "homepage": "https://github.com/nimiq/qr-scanner#readme",
+  "homepage": "https://github.com/josephrkramer/batuu-scanner#readme",
   "dependencies": {
     "@types/offscreencanvas": "^2019.6.4"
   },
