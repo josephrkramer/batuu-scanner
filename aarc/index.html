@@ -34,9 +34,6 @@
     </select>
     <br>
 </div>
-<b>Device has camera: </b>
-<span id="cam-has-camera"></span>
-<br>
 <div>
     <b>Preferred camera:</b>
     <select id="cam-list">
@@ -76,7 +73,6 @@
     const resultsHeader = document.getElementById('results-header');
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
-    const camHasCamera = document.getElementById('cam-has-camera');
     const camList = document.getElementById('cam-list');
     const camHasFlash = document.getElementById('cam-has-flash');
     const flashToggle = document.getElementById('flash-toggle');
@@ -137,8 +133,6 @@
             camList.add(option);
         }));
     });
-
-    QrScanner.hasCamera().then(hasCamera => camHasCamera.textContent = hasCamera);
 
     // for debugging
     window.scanner = scanner;
