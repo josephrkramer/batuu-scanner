@@ -17,20 +17,6 @@
 <button id="stop-button" style="font-size:36px;width:100%;background-color:white;color:black;padding:36px;">Stop</button>
 <br>
 <div>
-    <label>
-        Highlight Style
-        <select id="scan-region-highlight-style-select">
-            <option value="default-style">Default style</option>
-            <option value="example-style-1">Example custom style 1</option>
-            <option value="example-style-2">Example custom style 2</option>
-        </select>
-    </label>
-    <label>
-        <input id="show-scan-region" type="checkbox">
-        Show scan region canvas
-    </label>
-</div>
-<div>
     <select id="inversion-mode-select">
         <option value="original">Scan original (dark QR code on bright background)</option>
         <option value="invert">Scan with inverted colors (bright QR code on dark background)</option>
@@ -107,18 +93,6 @@
 
     // shut down scanner after initialization
     scanner.stop();
-
-    document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
-        videoContainer.className = e.target.value;
-        scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
-    });
-
-    document.getElementById('show-scan-region').addEventListener('change', (e) => {
-        const input = e.target;
-        const label = input.parentNode;
-        label.parentNode.insertBefore(scanner.$canvas, label.nextSibling);
-        scanner.$canvas.style.display = input.checked ? 'block' : 'none';
-    });
 
     document.getElementById('inversion-mode-select').addEventListener('change', event => {
         scanner.setInversionMode(event.target.value);
