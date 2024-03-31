@@ -1,27 +1,17 @@
-# QR Scanner
+# Batuu Scanner
 
-Javascript QR Code Scanner based on [Cosmo Wolfe's javascript port](https://github.com/cozmo/jsqr) of [Google's ZXing library](https://github.com/zxing/zxing).
+Javascript Batuu Code Scanner based on [NIMIQ's javascript port](https://github.com/nimiq/qr-scanner) of [Google's ZXing library](https://github.com/zxing/zxing). With additions of Galaxy's Edge Aztec Code mapping based on [Andrew Mohawk's Star Wars Aztec Barcodes](https://github.com/AndrewMohawk/StarwarsAztec)
 
-In this library, several improvements have been applied over the original port:
+This library and application are in no way affiliated with or sponsored by Walt Disney World. It is a free, open source, fan sponsored library and application.
 
-- Web cam scanning support out of the box
-- Uses the browser's native [BarcodeDetector](https://web.dev/shape-detection/) [if available](https://github.com/WICG/shape-detection-api#overview)
-- Lightweight: ~59.3 kB (~16.3 kB gzipped) minified with Google's closure compiler. If the native `BarcodeDetector` is available, only ~15.3 kB (~5.6 kB gzipped) are loaded.
-- Improved performance and reduced memory footprint.
-- Runs in a WebWorker which keeps the main / UI thread responsive.
-- Can be configured for better performance on colored QR codes.
+In this library, several changes have been applied over the original port:
 
-According to [our benchmarking](https://github.com/danimoh/qr-scanner-benchmark) this project's scanner engine's detection rate is about 2-3 times (and up to 8 times) as high as the one of the most popular javascript QR scanner library [LazarSoft/jsqrcode](https://github.com/LazarSoft/jsqrcode). Also the other library oftentimes misreads the content of QR codes, while for this project no misreads occurred in the benchmarking.
-
-The library supports scanning a continuous video stream from a web cam as well as scanning of single images.
-
-The development of this library is sponsored by [nimiq](https://www.nimiq.com), world's first browser based blockchain.
-
-[<img src="https://nimiq.github.io/qr-scanner/nimiq_logo_rgb_horizontal.svg" alt="nimiq.com" width="250">](https://nimiq.com)
-
+- Changed from QR Codes to Aztec Codes
+- Added a Crate Decoder class to interpret the codes returned by the crates in Galaxy's Edge.
 
 ## Demo
-See [https://nimiq.github.io/qr-scanner/demo/](https://nimiq.github.io/qr-scanner/demo/)
+See [https://josephrkramer.github.io/batuu-scanner/demo/](https://josephrkramer.github.io/batuu-scanner/demo/)
+![Single Image of all Barcodes](single_image_of_all_barcodes.png "Single Image of all Barcodes")
 
 ## Installation
 
@@ -115,8 +105,8 @@ Supported options are:
 | `preferredCamera` | Preference for the camera to be used. The preference can be either a device id as returned by `listCameras` or a facing mode specified as `'environment'` or `'user'`. The default is `'environment'`. Note that there is no guarantee that the preference can actually be fulfilled. |
 | `maxScansPerSecond` | This option can be used to throttle the scans for less battery consumption. The default is 25. [If supported by the browser](https://caniuse.com/mdn-api_htmlvideoelement_requestvideoframecallback), the scan rate is never higher than the camera's frame rate to avoid unnecessary duplicate scans on the same frame. |
 | `calculateScanRegion` | A method that determines a region to which scanning should be restricted as a performance improvement. This region can optionally also be scaled down before performing the scan as an additional performance improvement. The region is specified as `x`, `y`, `width` and `height`; the dimensions for the downscaled region as `downScaledWidth` and `downScaledHeight`. Note that the aspect ratio between `width` and `height` and `downScaledWidth` and `downScaledHeight` should remain the same. By default, the scan region is restricted to a centered square of two thirds of the video width or height, whichever is smaller, and scaled down to a 400x400 square. |
-| `highlightScanRegion` | Set this option to `true` for rendering an outline around the scan region on the video stream. This uses an absolutely positioned `div` that covers the scan region. This `div` can either be supplied as option `overlay`, see below, or automatically created and then accessed via `qrScanner.$overlay`. It can be freely styled via CSS, e.g. by setting an outline, border, background color, etc. See the [demo](https://nimiq.github.io/qr-scanner/demo/) for examples. |
-| `highlightCodeOutline` | Set this option to `true` for rendering an outline around detected QR codes. This uses an absolutely positioned `div` on which an SVG for rendering the outline will be placed. This `div` can either be supplied as option `overlay`, see below, or be accessed via `qrScanner.$overlay`. The SVG can be freely styled via CSS, e.g. by setting the fill color, stroke color, stroke width, etc. See the [demo](https://nimiq.github.io/qr-scanner/demo/) for examples. For more special needs, you can also use the `cornerPoints` directly, see below, for rendering an outline or the points yourself. |
+| `highlightScanRegion` | Set this option to `true` for rendering an outline around the scan region on the video stream. This uses an absolutely positioned `div` that covers the scan region. This `div` can either be supplied as option `overlay`, see below, or automatically created and then accessed via `qrScanner.$overlay`. It can be freely styled via CSS, e.g. by setting an outline, border, background color, etc. See the [demo](https://josephrkramer.github.io/batuu-scanner/demo/) for examples. |
+| `highlightCodeOutline` | Set this option to `true` for rendering an outline around detected QR codes. This uses an absolutely positioned `div` on which an SVG for rendering the outline will be placed. This `div` can either be supplied as option `overlay`, see below, or be accessed via `qrScanner.$overlay`. The SVG can be freely styled via CSS, e.g. by setting the fill color, stroke color, stroke width, etc. See the [demo](https://josephrkramer.github.io/batuu-scanner/demo/) for examples. For more special needs, you can also use the `cornerPoints` directly, see below, for rendering an outline or the points yourself. |
 | `overlay` | A custom `div` that can be supplied for use for `highlightScanRegion` and `highlightCodeOutline`. The `div` should be a sibling of `videoElem` in the DOM. If this option is supplied, the default styles for `highlightCodeOutline` are not applied as the expectation is that the element already has some custom style applied to it. |
 | `returnDetailedScanResult` | Enforce reporting detailed scan results, see below. |
 
@@ -247,6 +237,13 @@ qrScanner = null;
 ```
 This will stop the camera stream and web worker and cleans up event listeners.
 The QR scanner will be dysfunctional after it has been destroyed.
+
+### Crate Code Decoding
+You can decode the results of the Aztec Codes found in Galaxy's Edge using the `CrateDecoder` class.
+```js
+const crateDecoder = new CrateDecoder();
+crateDecoder.decode(scan_result.data).then(value => crate_contents = value);
+```
 
 ## Build the project
 The project is prebuild in qr-scanner.min.js in combination with qr-scanner-worker.min.js. Building yourself is only necessary if you want to change the code in
