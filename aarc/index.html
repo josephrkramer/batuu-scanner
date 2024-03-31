@@ -57,9 +57,6 @@
 <b>Last Crate Scanned: </b>
 <span id="last-crate-result">None</span>
 <br>
-<b>Last detected at: </b>
-<span id="cam-qr-result-timestamp"></span>
-<br>
 <button id="start-button">Start</button>
 <button id="stop-button">Stop</button>
 <hr>
@@ -80,7 +77,6 @@
     const camQrResult = document.getElementById('cam-qr-result');
     const lastCamQrResult = document.getElementById('last-cam-qr-result');
     const lastCrate = document.getElementById('last-crate-result');
-    const camQrResultTimestamp = document.getElementById('cam-qr-result-timestamp');
 
     const crateDecoder = new CrateDecoder();
 
@@ -91,7 +87,6 @@
         lastCamQrResult.style.color = 'teal';
         crateDecoder.decode(result.data).then(value => lastCrate.textContent = value);
         lastCrate.style.color = 'teal';
-        camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
