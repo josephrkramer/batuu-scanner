@@ -98,12 +98,14 @@
     document.getElementById('start-button').addEventListener('click', () => {
         logo.style.display = 'none';
         videoContainer.style.display = 'block';
+        resultsHeader.style.display = 'none';
         scanner.start();
     });
 
     document.getElementById('stop-button').addEventListener('click', () => {
         logo.style.display = 'block';
         videoContainer.style.display = 'none';
+        resultsHeader.style.display = 'none';
         scanner.stop();
     });
 </script>
