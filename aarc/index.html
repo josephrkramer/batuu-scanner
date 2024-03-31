@@ -9,7 +9,7 @@
     <img src="images/aarc-aurebesh.jpg" alt="AARC Logo" style="max-width: 100%;">
 </div>
 <h1 id="results-header" style="display: none;">None</h1>
-<div id="video-container">
+<div id="video-container" style="display: none;">
     <video id="qr-video"></video>
 </div>
 <button id="start-button" style="font-size:36px;width:100%;background-color:white;color:black;padding:36px;">Scan</button>
@@ -96,11 +96,13 @@
 
     document.getElementById('start-button').addEventListener('click', () => {
         logo.style.display = 'none';
+        videoContainer.style.display = 'block';
         scanner.start();
     });
 
     document.getElementById('stop-button').addEventListener('click', () => {
         logo.style.display = 'block';
+        videoContainer.style.display = 'none';
         scanner.stop();
     });
 </script>
