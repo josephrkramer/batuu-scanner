@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Batuu Code Scanner Demo</title>
 </head>
-<body style="background-color:#88642f;">
+<body style="background-color:black;color:white;">
 <div id="logo">
     <img src="images/aarc-aurebesh.jpg" alt="AARC Logo" style="max-width: 100%;">
 </div>
@@ -12,6 +12,10 @@
 <div id="video-container">
     <video id="qr-video"></video>
 </div>
+<button id="start-button" style="max-width:100%;max-height:20%;background-color:white;color:black;">Scan</button>
+<br>
+<button id="stop-button" sstyle="max-width:100%;max-height:20%;background-color:white;color:black;">Stop</button>
+<br>
 <div>
     <label>
         Highlight Style
@@ -57,9 +61,7 @@
 <b>Last Crate Scanned: </b>
 <span id="last-crate-result">None</span>
 <br>
-<button id="start-button">Start</button>
-<button id="stop-button">Stop</button>
-<hr>
+
 
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
 <!--<script src="../qr-scanner.legacy.min.js"></script>-->
