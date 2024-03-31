@@ -45,7 +45,6 @@
         <option value="user">User Facing</option>
     </select>
 </div>
-<b>Camera has flash: </b>
 <span id="cam-has-flash"></span>
 <div>
     <button id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
@@ -63,7 +62,6 @@
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
     const camList = document.getElementById('cam-list');
-    const camHasFlash = document.getElementById('cam-has-flash');
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
 
@@ -86,7 +84,6 @@
 
     const updateFlashAvailability = () => {
         scanner.hasFlash().then(hasFlash => {
-            camHasFlash.textContent = hasFlash;
             flashToggle.style.display = hasFlash ? 'inline-block' : 'none';
         });
     };
