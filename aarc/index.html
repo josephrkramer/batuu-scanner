@@ -6,7 +6,7 @@
 </head>
 <body>
 <div id="logo">
-    <img src="images/aarc-aurebesh.jpg" alt="AARC Logo">
+    <img src="images/aarc-aurebesh.jpg" alt="AARC Logo" style="max-width: 100%;">
 </div>
 <h1 id="results-header">Scan Batuu Code from WebCam:</h1>
 <div id="video-container">
@@ -77,6 +77,7 @@
 <script type="module">
     import { QrScanner, CrateDecoder } from "../qr-scanner.min.js";
 
+    const logo = document.getElementById('logo');
     const video = document.getElementById('qr-video');
     const videoContainer = document.getElementById('video-container');
     const camHasCamera = document.getElementById('cam-has-camera');
@@ -105,7 +106,7 @@
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
 
-        //scanner.$canvas.style.display = input.checked ? 'block' : 'none';
+        scanner.stop();
     }
 
     // ####### Web Cam Scanning #######
@@ -145,6 +146,9 @@
     // for debugging
     window.scanner = scanner;
 
+    // shut down scanner after initialization
+    scanner.stop();
+
     document.getElementById('scan-region-highlight-style-select').addEventListener('change', (e) => {
         videoContainer.className = e.target.value;
         scanner._updateOverlay(); // reposition the highlight because style 2 sets position: relative
@@ -170,10 +174,12 @@
     });
 
     document.getElementById('start-button').addEventListener('click', () => {
+        logo.style.display = 'none';
         scanner.start();
     });
 
     document.getElementById('stop-button').addEventListener('click', () => {
+        logo.style.display = 'block';
         scanner.stop();
     });
 
