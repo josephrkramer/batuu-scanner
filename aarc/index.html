@@ -51,10 +51,6 @@
     <button id="flash-toggle">📸 Flash: <span id="flash-state">off</span></button>
 </div>
 <br>
-<b>Detected QR code: </b>
-<span id="cam-qr-result">None</span>
-<br>
-<br>
 
 
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
@@ -70,17 +66,11 @@
     const camHasFlash = document.getElementById('cam-has-flash');
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
-    const camQrResult = document.getElementById('cam-qr-result');
 
     const crateDecoder = new CrateDecoder();
 
-    function setResult(label, result) {
+    function setResult(result) {
         console.log(result.data);
-        label.textContent = result.data;
-        label.style.color = 'teal';
-        clearTimeout(label.highlightTimeout);
-        label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
-
         crateDecoder.decode(result.data).then(value => resultsHeader.textContent = value);
         resultsHeader.style.display = 'block';
 
@@ -89,11 +79,7 @@
 
     // ####### Web Cam Scanning #######
 
-    const scanner = new QrScanner(video, result => setResult(camQrResult, result), {
-        onDecodeError: error => {
-            camQrResult.textContent = error;
-            camQrResult.style.color = 'inherit';
-        },
+    const scanner = new QrScanner(video, result => setResult(result), {
         highlightScanRegion: true,
         highlightCodeOutline: true,
     });
