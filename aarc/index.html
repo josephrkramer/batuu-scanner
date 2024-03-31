@@ -58,9 +58,6 @@
 <b>Last Detected QR code: </b>
 <span id="last-cam-qr-result">None</span>
 <br>
-<b>Last Crate Scanned: </b>
-<span id="last-crate-result">None</span>
-<br>
 
 
 <!--<script src="../qr-scanner.umd.min.js"></script>-->
@@ -78,7 +75,6 @@
     const flashState = document.getElementById('flash-state');
     const camQrResult = document.getElementById('cam-qr-result');
     const lastCamQrResult = document.getElementById('last-cam-qr-result');
-    const lastCrate = document.getElementById('last-crate-result');
 
     const crateDecoder = new CrateDecoder();
 
@@ -87,8 +83,6 @@
         label.textContent = result.data;
         lastCamQrResult.textContent = result.data;
         lastCamQrResult.style.color = 'teal';
-        crateDecoder.decode(result.data).then(value => lastCrate.textContent = value);
-        lastCrate.style.color = 'teal';
         label.style.color = 'teal';
         clearTimeout(label.highlightTimeout);
         label.highlightTimeout = setTimeout(() => label.style.color = 'inherit', 100);
