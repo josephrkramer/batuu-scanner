@@ -8,6 +8,7 @@
 <div id="logo">
     <img src="images/aarc-aurebesh.jpg" alt="AARC Logo" style="max-width: 100%;">
 </div>
+<img id="contents-image" src="images/aarc.jpg" alt="Crate Contents" style="max-width: 100%;display:none;">
 <h1 id="results-header" style="display:none;text-align:center;padding-top:70px;padding-bottom:70px">None</h1>
 <div id="video-container" style="display: none;">
     <video id="qr-video"></video>
@@ -42,6 +43,7 @@
     const camList = document.getElementById('cam-list');
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
+    const contentsImage = document.getElementById('contents-image');
 
     const crateDecoder = new CrateDecoder();
 
@@ -52,6 +54,9 @@
 
         scanner.stop();
         videoContainer.style.display = 'none';
+
+        contentsImage.style.display = 'block';
+        crateDecoder.decode(result.data).then(value => contentsImage.src = value.image);
     }
 
     // ####### Web Cam Scanning #######
@@ -99,6 +104,7 @@
         logo.style.display = 'none';
         videoContainer.style.display = 'block';
         resultsHeader.style.display = 'none';
+        contentsImage.style.display = 'none';
         scanner.start();
     });
 
@@ -106,6 +112,7 @@
         logo.style.display = 'block';
         videoContainer.style.display = 'none';
         resultsHeader.style.display = 'none';
+        contentsImage.style.display = 'none';
         scanner.stop();
     });
 </script>

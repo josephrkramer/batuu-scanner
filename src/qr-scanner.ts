@@ -1295,6 +1295,33 @@ export class CrateDecoder {
 
     async decode(code: string): Promise<CrateContents> {
         if (this.contents.has(code)) {
+            let crate = this.contents.get(code)!;
+            if (crate.image == "") {
+                if (crate.type == CrateType.Halcyon_Cargo) {
+                    crate.image = "images/halcyon_cargo.jpeg";
+                } else if (crate.type == CrateType.Outfit) {
+                    crate.image = "images/outfit.jpeg";
+                } else if (crate.type == CrateType.Empty) {
+                    crate.image = "images/empty.jpeg";
+                } else if (crate.type == CrateType.Weapon) {
+                    crate.image = "images/weapon.jpeg"
+                } else if (crate.type == CrateType.Cargo) {
+                    // TODO: get a Cargo image
+                    crate.image = "images/empty.jpeg"
+                } else if (crate.type == CrateType.Parts_and_Scraps) {
+                    crate.image = "images/parts_and_scraps.jpeg"
+                } else if (crate.type == CrateType.Program) {
+                    crate.image = "images/program.jpeg"
+                } else if (crate.type == CrateType.Vehicle) {
+                    // TODO: get a Vehicle image
+                    crate.image = "images/halcyon_cargo.jpeg"
+                } else if (crate.type == CrateType.Ports_Of_Call) {
+                    crate.image = "images/ports_of_call.jpeg"
+                } else {
+                    crate.image = "images/aarc.jpg"
+                }
+            }
+
             return this.contents.get(code)!;
         } else {
             return new CrateContents({code: '?????', contents: 'Unknown contents', type: CrateType.Empty});
