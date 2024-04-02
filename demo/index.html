@@ -95,7 +95,7 @@
         label.textContent = result.data;
         lastCamQrResult.textContent = result.data;
         lastCamQrResult.style.color = 'teal';
-        crateDecoder.decode(result.data).then(value => lastCrate.textContent = value);
+        crateDecoder.decode(result.data).then(value => lastCrate.textContent = value.contents);
         lastCrate.style.color = 'teal';
         camQrResultTimestamp.textContent = new Date().toString();
         label.style.color = 'teal';
