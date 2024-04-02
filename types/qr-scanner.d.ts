@@ -137,9 +137,32 @@ declare global {
         };
     }
 }
+export declare enum CrateType {
+    Halcyon_Cargo = 0,
+    Outfit = 1,
+    Empty = 2,
+    Weapon = 3,
+    Cargo = 4,
+    Parts_and_Scraps = 5,
+    Program = 6,
+    Vehicle = 7,
+    Ports_Of_Call = 8
+}
+export declare class CrateContents {
+    code: string;
+    contents: string;
+    type: CrateType;
+    image: string;
+    constructor({ code, contents, type, image }: {
+        code: string;
+        contents: string;
+        type: CrateType;
+        image?: string;
+    });
+}
 export declare class CrateDecoder {
-    contents: Map<string, string>;
+    private contents;
     constructor();
-    decode(code: string): Promise<string>;
+    decode(code: string): Promise<CrateContents>;
 }
 export {};

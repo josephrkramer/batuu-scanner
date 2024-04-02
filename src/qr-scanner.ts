@@ -1131,6 +1131,7 @@ export enum CrateType {
     Parts_and_Scraps,
     Program,
     Vehicle,
+    Ports_Of_Call,
 }
 
 export class CrateContents {
@@ -1212,91 +1213,91 @@ export class CrateDecoder {
         this.contents.set('CAST08', new CrateContents({code: 'CAST08', contents: 'Lost Holocron', type: CrateType.Halcyon_Cargo}));
         this.contents.set('CAST06', new CrateContents({code: 'CAST06', contents: 'Autopilot Override Program', type: CrateType.Program}));
         this.contents.set('AB_TU', new CrateContents({code: 'AB_TU', contents: 'NN-14 Blaster Pistol', type: CrateType.Weapon}));
-        this.contents.set('FAL17', new CrateContents({code: 'FAL17', contents: 'Security Enhanced Comlink [Parts & Scraps]', type: CrateType.Parts_and_Scraps}));
-        this.contents.set('IJ_MN', 'Tracer Beacon [Parts & Scraps]');
-        this.contents.set('FAL21', 'Bowcaster [Weapon]');
-        this.contents.set('FG_OP', 'Salvage Cleaning Kit [Cargo]');
-        this.contents.set('BC_LM', 'Resistance Flight Uniform [Outfit]');
-        this.contents.set('EF_QR', 'Diatium Power Core [Parts & Scraps]');
-        this.contents.set('AB_RS', 'T-47 Airspeeder Harpoon Gun [Weapon]');
-        this.contents.set('GI_MN', 'Spice [Cargo]');
-        this.contents.set('FAL23', 'Neuro-Saav TE4.4 Field Quadnoculars [Cargo]');
-        this.contents.set('FAL06', 'Z-6 Jetpack [Weapon]');
-        this.contents.set('FG_NO', 'Food Ration Packs [Cargo]');
-        this.contents.set('IJ_ST', 'No immediate reward. -- likely part of challenge');
-        this.contents.set('FAL03', 'Kyber Crystals - Blue [Parts & Scraps]');
-        this.contents.set('BC_MN', 'Resistance Ground Forces Outfit [Outfit]');
-        this.contents.set('IJ_UV', 'Coded Communicator [Cargo]');
-        this.contents.set('KL_ST', 'No immediate reward. -- likely part of challenge');
-        this.contents.set('BC_OP', 'Death Star Gunner Uniform [Outfit]');
-        this.contents.set('KL_LM', 'Jedi Crusader Necklace [Halcyon Cargo]');
-        this.contents.set('JK_TU', 'Hayananeya Data [Program]');
-        this.contents.set('CAST18', 'Ports of Call Anomalies [Ports Of Call]');
-        this.contents.set('CAST17', 'All-Kit [Halcyon Cargo]');
-        this.contents.set('JK_LM', 'Medical Equipment Bags [Cargo]');
-        this.contents.set('KL_TU', 'No immediate reward. -- likely part of challenge');
-        this.contents.set('EF_PQ', 'Osteo Fragmenter [Parts & Scraps]');
-        this.contents.set('CD_QR', 'Marauder Armor [Outfit]');
-        this.contents.set('JK_NO', 'Tank Containing Bacta Fluid [Cargo]');
-        this.contents.set('EF_MN', 'Tracer Beacon [Parts & Scraps]');
-        this.contents.set('GI_OP', 'Medical Equipment Bags [Cargo]');
-        this.contents.set('BC_RS', 'Batuu Rain Outfit [Outfit]');
-        this.contents.set('JK_UV', 'Tool Demagnetizer [Halcyon Cargo]');
-        this.contents.set('DE_MN', 'Vaporator Blades [Parts & Scraps]');
-        this.contents.set('EF_ST', 'Security Enhanced Comlink [Parts & Scraps]');
-        this.contents.set('FAL24', 'Spice [Cargo]');
-        this.contents.set('JK_RS', 'No immediate reward. -- likely part of challenge');
-        this.contents.set('EF_UV', 'F-11D Blaster Rifle [Weapon]');
-        this.contents.set('IJ_NO', 'No immediate reward. -- likely part of challenge');
-        this.contents.set('FAL05', 'Resistance Flight Uniform [Outfit]');
-        this.contents.set('EF_RS', 'Hang Glider [Parts & Scraps]');
-        this.contents.set('FAL25', 'RA-7 Personal Servant Droid Arm [Parts & Scraps]');
-        this.contents.set('CAST03', 'Droid Unbolting Program [Program]');
-        this.contents.set('FAL19', 'Tracer Beacon [Parts & Scraps]');
-        this.contents.set('IJ_PQ', 'Glie-44 Blaster Pistol [Weapon]');
-        this.contents.set('CAST10', 'First Order Credentials [Program]');
-        this.contents.set('FAL22', 'A99 Aquata Breather [Cargo]');
-        this.contents.set('KL_RS', 'All-Kit [Halcyon Cargo]');
-        this.contents.set('GI_PQ', 'Star Destroyer Capacitor Bearing [Parts & Scraps]');
-        this.contents.set('CAST12', 'Decoy Stone [Halcyon Cargo]');
-        this.contents.set('DE_PQ', 'Kyber Crystals - Blue [Parts & Scraps]');
-        this.contents.set('FAL04', 'Carbon Chisel [Parts & Scraps]');
-        this.contents.set('FAL29', 'Medical Equipment Bags [Cargo]');
-        this.contents.set('KL_UV', 'No immediate reward. -- likely part of challenge');
-        this.contents.set('IJ_TU', 'Neuro-Saav TE4.4 Field Quadnoculars [Cargo]');
-        this.contents.set('EF_OP', 'Carbon Chisel [Parts & Scraps]');
-        this.contents.set('DE_NO', 'AT-AT Targeting Computer [Parts & Scraps]');
-        this.contents.set('CAST05', 'Datatapes [Halcyon Cargo]');
-        this.contents.set('CAST01', 'Coaxium [Halcyon Cargo]');
-        this.contents.set('FAL28', 'Jawa Outfit [Outfit]');
-        this.contents.set('CAST16', 'Personnel Anomalies [Program]');
-        this.contents.set('DE_LM', 'RA-7 Personal Servant Droid Arm [Parts & Scraps]');
-        this.contents.set('FG_PQ', 'Sewing Thread [Cargo]');
-        this.contents.set('CD_RS', 'Leather Armor [Outfit]');
-        this.contents.set('JK_PQ', 'Engineering Tools [Halcyon Cargo]');
-        this.contents.set('DE_ST', 'Kyber Crystals - Purple [Parts & Scraps]');
-        this.contents.set('EF_NO', 'Computer Probe Arm (R-unit) [Parts & Scraps]');
-        this.contents.set('BC_NO', 'Stormtrooper Armor [Outfit]');
-        this.contents.set('IJ_QR', 'Pyro Denton Explosive [Weapon]');
-        this.contents.set('FG_MN', 'First Order Binders [Parts & Scraps]');
-        this.contents.set('FAL26', 'Plush Toys [Cargo]');
-        this.contents.set('FG_UV', 'Neuro-Saav TE4.4 Field Quadnoculars [Cargo]');
-        this.contents.set('DE_OP', 'Jawa Outfit [Outfit]');
-        this.contents.set('DE_RS', 'Kyber Crystals - Red [Parts & Scraps]');
-        this.contents.set('IJ_LM', 'Concussion Disc [Weapon]');
-        this.contents.set('CAST13', 'Hayananeya Schematic [Program]');
-        this.contents.set('FAL08', 'Concussion Disc [Weapon]');
-        this.contents.set('FAL27', 'AT-AT Targeting Computer [Parts & Scraps]');
-        this.contents.set('AB_MN', 'Z-6 Jetpack [Weapon]');
-        this.contents.set('IJ_OP', 'Batuu Sun Outfit [Outfit]');
-        this.contents.set('CAST04', 'Resistance Coordinates [Program]');
+        this.contents.set('FAL17', new CrateContents({code: 'FAL17', contents: 'Security Enhanced Comlink', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('IJ_MN', new CrateContents({code: 'IJ_MN', contents: 'Tracer Beacon', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FAL21', new CrateContents({code: 'FAL21', contents: 'Bowcaster', type: CrateType.Weapon}));
+        this.contents.set('FG_OP', new CrateContents({code: 'FG_OP', contents: 'Salvage Cleaning Kit', type: CrateType.Cargo}));
+        this.contents.set('BC_LM', new CrateContents({code: 'BC_LM', contents: 'Resistance Flight Uniform', type: CrateType.Outfit}));
+        this.contents.set('EF_QR', new CrateContents({code: 'EF_QR', contents: 'Diatium Power Core', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('AB_RS', new CrateContents({code: 'AB_RS', contents: 'T-47 Airspeeder Harpoon Gun', type: CrateType.Weapon}));
+        this.contents.set('GI_MN', new CrateContents({code: 'GI_MN', contents: 'Spice', type: CrateType.Cargo}));
+        this.contents.set('FAL23', new CrateContents({code: 'FAL23', contents: 'Neuro-Saav TE4.4 Field Quadnoculars', type: CrateType.Cargo}));
+        this.contents.set('FAL06', new CrateContents({code: 'FAL06', contents: 'Z-6 Jetpack', type: CrateType.Weapon}));
+        this.contents.set('FG_NO', new CrateContents({code: 'FG_NO', contents: 'Food Ration Packs', type: CrateType.Cargo}));
+        this.contents.set('IJ_ST', new CrateContents({code: 'IJ_ST', contents: 'No immediate reward. -- likely part of challenge', type: CrateType.Empty}));
+        this.contents.set('FAL03', new CrateContents({code: 'FAL03', contents: 'Kyber Crystals - Blue', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('BC_MN', new CrateContents({code: 'BC_MN', contents: 'Resistance Ground Forces Outfit', type: CrateType.Outfit}));
+        this.contents.set('IJ_UV', new CrateContents({code: 'IJ_UV', contents: 'Coded Communicator', type: CrateType.Cargo}));
+        this.contents.set('KL_ST', new CrateContents({code: 'KL_ST', contents: 'No immediate reward. -- likely part of challenge', type: CrateType.Empty}));
+        this.contents.set('BC_OP', new CrateContents({code: 'BC_OP', contents: 'Death Star Gunner Uniform', type: CrateType.Outfit}));
+        this.contents.set('KL_LM', new CrateContents({code: 'KL_LM', contents: 'Jedi Crusader Necklace', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('JK_TU', new CrateContents({code: 'JK_TU', contents: 'Hayananeya Data', type: CrateType.Program}));
+        this.contents.set('CAST18', new CrateContents({code: 'CAST18', contents: 'Ports of Call Anomalies', type: CrateType.Ports_Of_Call}));
+        this.contents.set('CAST17', new CrateContents({code: 'CAST17', contents: 'All-Kit [Halcyon Cargo]', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('JK_LM', new CrateContents({code: 'JK_LM', contents: 'Medical Equipment Bags', type: CrateType.Cargo}));
+        this.contents.set('KL_TU', new CrateContents({code: 'KL_TU', contents: 'No immediate reward. -- likely part of challenge', type: CrateType.Empty}));
+        this.contents.set('EF_PQ', new CrateContents({code: 'EF_PQ', contents: 'Osteo Fragmenter [Parts & Scraps]', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('CD_QR', new CrateContents({code: 'CD_QR', contents: 'Marauder Armor', type: CrateType.Outfit}));
+        this.contents.set('JK_NO', new CrateContents({code: 'JK_NO', contents: 'Tank Containing Bacta Fluid', type: CrateType.Cargo}));
+        this.contents.set('EF_MN', new CrateContents({code: 'EF_MN', contents: 'Tracer Beacon', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('GI_OP', new CrateContents({code: 'GI_OP', contents: 'Medical Equipment Bags', type: CrateType.Cargo}));
+        this.contents.set('BC_RS', new CrateContents({code: 'BC_RS', contents: 'Batuu Rain Outfit', type: CrateType.Outfit}));
+        this.contents.set('JK_UV', new CrateContents({code: 'JK_UV', contents: 'Tool Demagnetizer', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('DE_MN', new CrateContents({code: 'DE_MN', contents: 'Vaporator Blades', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('EF_ST', new CrateContents({code: 'EF_ST', contents: 'Security Enhanced Comlink', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FAL24', new CrateContents({code: 'FAL24', contents: 'Spice', type: CrateType.Cargo}));
+        this.contents.set('JK_RS', new CrateContents({code: 'JK_RS', contents: 'No immediate reward. -- likely part of challenge', type: CrateType.Empty}));
+        this.contents.set('EF_UV', new CrateContents({code: 'EF_UV', contents: 'F-11D Blaster Rifle', type: CrateType.Weapon}));
+        this.contents.set('IJ_NO', new CrateContents({code: 'IJ_NO', contents: 'No immediate reward. -- likely part of challenge', type: CrateType.Empty}));
+        this.contents.set('FAL05', new CrateContents({code: 'FAL05', contents: 'Resistance Flight Uniform', type: CrateType.Outfit}));
+        this.contents.set('EF_RS', new CrateContents({code: 'EF_RS', contents: 'Hang Glider', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FAL25', new CrateContents({code: 'FAL25', contents: 'RA-7 Personal Servant Droid Arm', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('CAST03', new CrateContents({code: 'CAST03', contents: 'Droid Unbolting Program', type: CrateType.Program}));
+        this.contents.set('FAL19', new CrateContents({code: 'FAL19', contents: 'Tracer Beacon', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('IJ_PQ', new CrateContents({code: 'IJ_PQ', contents: 'Glie-44 Blaster Pistol', type: CrateType.Weapon}));
+        this.contents.set('CAST10', new CrateContents({code: 'CAST10', contents: 'First Order Credentials', type: CrateType.Program}));
+        this.contents.set('FAL22', new CrateContents({code: 'FAL22', contents: 'A99 Aquata Breather', type: CrateType.Cargo}));
+        this.contents.set('KL_RS', new CrateContents({code: 'KL_RS', contents: 'All-Kit', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('GI_PQ', new CrateContents({code: 'GI_PQ', contents: 'Star Destroyer Capacitor Bearing', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('CAST12', new CrateContents({code: 'CAST12', contents: 'Decoy Stone', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('DE_PQ', new CrateContents({code: 'DE_PQ', contents: 'Kyber Crystals - Blue', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FAL04', new CrateContents({code: 'FAL04', contents: 'Carbon Chisel', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FAL29', new CrateContents({code: 'FAL29', contents: 'Medical Equipment Bags', type: CrateType.Cargo}));
+        this.contents.set('KL_UV', new CrateContents({code: 'KL_UV', contents: 'No immediate reward. -- likely part of challenge', type: CrateType.Empty}));
+        this.contents.set('IJ_TU', new CrateContents({code: 'IJ_TU', contents: 'Neuro-Saav TE4.4 Field Quadnoculars', type: CrateType.Cargo}));
+        this.contents.set('EF_OP', new CrateContents({code: 'EF_OP', contents: 'Carbon Chisel', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('DE_NO', new CrateContents({code: 'DE_NO', contents: 'AT-AT Targeting Computer', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('CAST05', new CrateContents({code: 'CAST05', contents: 'Datatapes', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('CAST01', new CrateContents({code: 'CAST01', contents: 'Coaxium', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('FAL28', new CrateContents({code: 'FAL28', contents: 'Jawa Outfit', type: CrateType.Outfit}));
+        this.contents.set('CAST16', new CrateContents({code: 'CAST16', contents: 'Personnel Anomalies', type: CrateType.Program}));
+        this.contents.set('DE_LM', new CrateContents({code: 'DE_LM', contents: 'RA-7 Personal Servant Droid Arm', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FG_PQ', new CrateContents({code: 'FG_PQ', contents: 'Sewing Thread', type: CrateType.Cargo}));
+        this.contents.set('CD_RS', new CrateContents({code: 'CD_RS', contents: 'Leather Armor', type: CrateType.Outfit}));
+        this.contents.set('JK_PQ', new CrateContents({code: 'JK_PQ', contents: 'Engineering Tools', type: CrateType.Halcyon_Cargo}));
+        this.contents.set('DE_ST', new CrateContents({code: 'DE_ST', contents: 'Kyber Crystals - Purple', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('EF_NO', new CrateContents({code: 'EF_NO', contents: 'Computer Probe Arm (R-unit)', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('BC_NO', new CrateContents({code: 'BC_NO', contents: 'Stormtrooper Armor', type: CrateType.Outfit}));
+        this.contents.set('IJ_QR', new CrateContents({code: 'IJ_QR', contents: 'Pyro Denton Explosive', type: CrateType.Weapon}));
+        this.contents.set('FG_MN', new CrateContents({code: 'FG_MN', contents: 'First Order Binders', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('FAL26', new CrateContents({code: 'FAL26', contents: 'Plush Toys', type: CrateType.Cargo}));
+        this.contents.set('FG_UV', new CrateContents({code: 'FG_UV', contents: 'Neuro-Saav TE4.4 Field Quadnoculars', type: CrateType.Cargo}));
+        this.contents.set('DE_OP', new CrateContents({code: 'DE_OP', contents: 'Jawa Outfit [Outfit]', type: CrateType.Outfit}));
+        this.contents.set('DE_RS', new CrateContents({code: 'DE_RS', contents: 'Kyber Crystals - Red', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('IJ_LM', new CrateContents({code: 'IJ_LM', contents: 'Concussion Disc', type: CrateType.Weapon}));
+        this.contents.set('CAST13', new CrateContents({code: 'CAST13', contents: 'Hayananeya Schematic', type: CrateType.Program}));
+        this.contents.set('FAL08', new CrateContents({code: 'FAL08', contents: 'Concussion Disc', type: CrateType.Weapon}));
+        this.contents.set('FAL27', new CrateContents({code: 'FAL27', contents: 'AT-AT Targeting Computer', type: CrateType.Parts_and_Scraps}));
+        this.contents.set('AB_MN', new CrateContents({code: 'AB_MN', contents: 'Z-6 Jetpack', type: CrateType.Weapon}));
+        this.contents.set('IJ_OP', new CrateContents({code: 'IJ_OP', contents: 'Batuu Sun Outfit', type: CrateType.Outfit}));
+        this.contents.set('CAST04', new CrateContents({code: 'CAST04', contents: 'Resistance Coordinates', type: CrateType.Program}));
     }
 
-    async decode(code: string): Promise<string> {
+    async decode(code: string): Promise<CrateContents> {
         if (this.contents.has(code)) {
             return this.contents.get(code)!;
         } else {
-            return 'Unknown contents';
+            return new CrateContents({code: '?????', contents: 'Unknown contents', type: CrateType.Empty});
         }
     }
 }
