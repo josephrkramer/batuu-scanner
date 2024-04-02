@@ -47,7 +47,7 @@
 
     function setResult(result) {
         console.log(result.data);
-        crateDecoder.decode(result.data).then(value => resultsHeader.textContent = value);
+        crateDecoder.decode(result.data).then(value => resultsHeader.textContent = result.data + ' - ' + value);
         resultsHeader.style.display = 'block';
 
         scanner.stop();
