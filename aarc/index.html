@@ -13,9 +13,15 @@
 <div id="video-container" style="display: none;">
     <video id="qr-video"></video>
 </div>
+<div id="scanned" style="display: none;">
+    <ul id="scanned-list">
+    </ul>
+</div>
 <button id="start-button" style="font-size:36px;width:100%;background-color:white;color:black;padding:36px;">Scan</button>
 <br>
 <button id="stop-button" style="font-size:36px;width:100%;background-color:white;color:black;padding:36px;">Stop</button>
+<br>
+<button id="scanned-button" style="font-size:36px;width:100%;background-color:white;color:black;padding:36px;">Backpack</button>
 <br>
 <div>
     <b>Preferred camera:</b>
@@ -44,19 +50,28 @@
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
     const contentsImage = document.getElementById('contents-image');
+    const scanned = document.getElementById('scanned');
 
     const crateDecoder = new CrateDecoder();
 
     function setResult(result) {
         console.log(result.data);
+        //update the display text for the item
         crateDecoder.decode(result.data).then(value => resultsHeader.textContent = result.data + " - " + value.contents);
         resultsHeader.style.display = 'block';
 
+        //shut off the scanner so we can see the results
         scanner.stop();
         videoContainer.style.display = 'none';
 
+        //display the image contents
         contentsImage.style.display = 'block';
         crateDecoder.decode(result.data).then(value => contentsImage.src = value.image);
+
+        //add the item to the scanned list
+        let scannedListItem = document.createElement('li');
+        crateDecoder.decode(result.data).then(value => scannedListItem.appendChild(document.createTextNode(value.contents)));
+        scanned.appendChild(scannedListItem); 
     }
 
     // ####### Web Cam Scanning #######
@@ -105,6 +120,7 @@
         videoContainer.style.display = 'block';
         resultsHeader.style.display = 'none';
         contentsImage.style.display = 'none';
+        scanned.style.display = 'none';
         scanner.start();
     });
 
@@ -113,6 +129,16 @@
         videoContainer.style.display = 'none';
         resultsHeader.style.display = 'none';
         contentsImage.style.display = 'none';
+        scanned.style.display = 'none';
+        scanner.stop();
+    });
+
+    document.getElementById('scanned-button').addEventListener('click', () => {
+        logo.style.display = 'none';
+        videoContainer.style.display = 'none';
+        resultsHeader.style.display = 'none';
+        contentsImage.style.display = 'none';
+        scanned.style.display = 'block';
         scanner.stop();
     });
 </script>
