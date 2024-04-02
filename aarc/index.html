@@ -54,6 +54,13 @@
 
     const crateDecoder = new CrateDecoder();
 
+    function addToScanned(code) {
+        //add the item to the scanned list
+        let scannedListItem = document.createElement('li');
+        crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode(value.contents)));
+        scanned.appendChild(scannedListItem);
+    }
+
     function setResult(result) {
         console.log(result.data);
         //update the display text for the item
@@ -69,9 +76,7 @@
         crateDecoder.decode(result.data).then(value => contentsImage.src = value.image);
 
         //add the item to the scanned list
-        let scannedListItem = document.createElement('li');
-        crateDecoder.decode(result.data).then(value => scannedListItem.appendChild(document.createTextNode(value.contents)));
-        scanned.appendChild(scannedListItem); 
+        addToScanned(result.data);
     }
 
     // ####### Web Cam Scanning #######
