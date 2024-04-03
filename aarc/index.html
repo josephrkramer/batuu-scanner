@@ -75,6 +75,9 @@
         scannedListItem.appendChild(scannedImage);
         crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode("  " + value.contents)));
         scanned.appendChild(scannedListItem);
+
+        //store all of the scanned crates into local storage
+        localStorage.setItem('cargo', JSON.stringify(Array.from(scannedCrates)));
     }
 
     //load from local storage
@@ -124,9 +127,6 @@
         if (!scannedCrates.has(result.data)) {
             addToScanned(result.data);
         }
-
-        //store all of the scanned crates into local storage
-        localStorage.setItem('cargo', JSON.stringify(Array.from(scannedCrates)));
     }
 
     // ####### Web Cam Scanning #######
