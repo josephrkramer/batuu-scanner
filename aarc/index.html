@@ -101,6 +101,9 @@
         addToScanned('KL_QR');
         addToScanned('CD_LM');
         addToScanned('AB_QR');
+
+        //store all of the scanned crates into local storage
+        localStorage.setItem('cargo', JSON.stringify(Array.from(scannedCrates)));
     }
 
     function setResult(result) {
