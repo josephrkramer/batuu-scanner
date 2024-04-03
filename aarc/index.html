@@ -80,10 +80,10 @@
     //load from local storage
     scannedCrates = JSON.parse(localStorage.getItem('cargo'));
     if (scannedCrates) {
-        const previousCrates = scannedCrates.entries();
+        const previousCrates = scannedCrates.values();
         for (const crate of previousCrates) {
             console.log(entry);
-            addToScanned(crate[0]);
+            addToScanned(crate);
         }
     } else {
         scannedCrates = new Set();
