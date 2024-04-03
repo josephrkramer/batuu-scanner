@@ -55,7 +55,7 @@
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
     const contentsImage = document.getElementById('contents-image');
-    const scanned = document.getElementById('scanned');
+    let scanned = document.getElementById('scanned');
 
     //Keep track of the crates scanned so far and don't allow duplicates
     let scannedCrates = new Set();
@@ -96,6 +96,7 @@
 
     if (urlParams.has('reset')) {
         scannedCrates.clear();
+        scanned = document.createElement('ul');
     }
 
     //use the url with ?cargo to load test data into the app
