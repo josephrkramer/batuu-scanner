@@ -42,6 +42,11 @@
 <script type="module">
     import { QrScanner, CrateDecoder } from "../qr-scanner.min.js";
 
+    //read parameters from the url
+    const queryString = window.location.search;
+    console.log(queryString);
+    const urlParams = new URLSearchParams(queryString);
+
     const logo = document.getElementById('logo');
     const resultsHeader = document.getElementById('results-header');
     const video = document.getElementById('qr-video');
@@ -72,11 +77,14 @@
         scanned.appendChild(scannedListItem);
     }
 
-    //TODO: remove this temporary loading of the Cargo Hold for testing
-    addToScanned('FAL11');
-    addToScanned('KL_QR');
-    addToScanned('CD_LM');
-    addToScanned('AB_QR');
+    //use the url with ?cargo=true
+    console.log(urlParams.has('cargo'));
+    if (urlParams.has('cargo')) {
+        addToScanned('FAL11');
+        addToScanned('KL_QR');
+        addToScanned('CD_LM');
+        addToScanned('AB_QR');
+    }
 
     function setResult(result) {
         console.log(result.data);
