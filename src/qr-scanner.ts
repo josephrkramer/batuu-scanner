@@ -1325,4 +1325,8 @@ export class CrateDecoder {
             return new CrateContents({code: '?????', contents: 'Unknown contents', type: CrateType.Empty});
         }
     }
+
+    override(crate: CrateContents): void {
+        this.contents.set(crate.code, crate);
+    }
 }

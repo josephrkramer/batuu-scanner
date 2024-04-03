@@ -164,5 +164,6 @@ export declare class CrateDecoder {
     private contents;
     constructor();
     decode(code: string): Promise<CrateContents>;
+    override(crate: CrateContents): void;
 }
 export {};
