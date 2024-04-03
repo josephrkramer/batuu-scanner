@@ -13,6 +13,17 @@ In this library, several changes have been applied over the original port:
 See [https://josephrkramer.github.io/batuu-scanner/demo/](https://josephrkramer.github.io/batuu-scanner/demo/)
 ![Single Image of all Barcodes](single_image_of_all_barcodes.png "Single Image of all Barcodes")
 
+## AARC Scanner
+See [https://josephrkramer.github.io/batuu-scanner/aarc/](https://josephrkramer.github.io/batuu-scanner/aarc/)
+![Single Image of all Barcodes](single_image_of_all_barcodes.png "Single Image of all Barcodes")
+
+### Pre-populate with cargo
+See [https://josephrkramer.github.io/batuu-scanner/aarc/?cargo](https://josephrkramer.github.io/batuu-scanner/aarc/?cargo)
+
+### Empty the cargo bay
+See [https://josephrkramer.github.io/batuu-scanner/aarc/?reset](https://josephrkramer.github.io/batuu-scanner/aarc/?reset)
+
+
 ## Installation
 
 To install via npm:
