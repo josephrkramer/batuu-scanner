@@ -79,7 +79,9 @@
 
     //load from local storage
     scannedCrates = JSON.parse(localStorage.getItem('cargo'));
-    scannedCrates.forEach(setResult)
+    if (scannedCrates) {
+        scannedCrates.forEach(setResult)
+    }
 
     if (urlParams.has('reset')) {
         scannedCrates.clear();
