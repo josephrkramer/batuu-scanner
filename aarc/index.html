@@ -78,7 +78,7 @@
     }
 
     //load from local storage
-    scannedCrates = JSON.parse(localStorage.getItem('cargo'));
+    scannedCrates = new Set(JSON.parse(localStorage.getItem('cargo')));
     console.log("SCANNED CRATES");
     console.log(scannedCrates);
     if (scannedCrates && scannedCrates.size > 0) {
@@ -96,7 +96,6 @@
     }
 
     //use the url with ?cargo to load test data into the app
-    console.log(urlParams.has('cargo'));
     if (urlParams.has('cargo')) {
         addToScanned('FAL11');
         addToScanned('KL_QR');
