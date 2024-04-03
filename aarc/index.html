@@ -52,9 +52,15 @@
     const contentsImage = document.getElementById('contents-image');
     const scanned = document.getElementById('scanned');
 
+    //Keep track of the crates scanned so far and don't allow duplicates
+    const scannedCrates = new Set();
+
     const crateDecoder = new CrateDecoder();
 
     function addToScanned(code) {
+        //add the item to the scannedCrates internal tracking
+        scannedCrates.add(code);
+
         //add the item to the scanned list
         let scannedListItem = document.createElement('li');
         crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode(value.contents)));
@@ -75,8 +81,10 @@
         contentsImage.style.display = 'block';
         crateDecoder.decode(result.data).then(value => contentsImage.src = value.image);
 
-        //add the item to the scanned list
-        addToScanned(result.data);
+        //add the item to the scanned list if not previously scanned
+        if (!scannedCrates.has(result.data)) {
+            addToScanned(result.data);
+        }
     }
 
     // ####### Web Cam Scanning #######
