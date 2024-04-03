@@ -81,7 +81,7 @@
     scannedCrates = JSON.parse(localStorage.getItem('cargo'));
     console.log("SCANNED CRATES");
     console.log(scannedCrates);
-    if (scannedCrates && scannedCrates.size() > 0) {
+    if (scannedCrates && scannedCrates.size > 0) {
         const previousCrates = scannedCrates.keys();
         for (const crate of previousCrates) {
             console.log(entry);
@@ -124,7 +124,7 @@
         }
 
         //store all of the scanned crates into local storage
-        localStorage.setItem('cargo', JSON.stringify(scannedCrates));
+        localStorage.setItem('cargo', JSON.stringify(Array.from(scannedCrates)));
     }
 
     // ####### Web Cam Scanning #######
