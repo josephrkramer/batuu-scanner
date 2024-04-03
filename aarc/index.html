@@ -55,10 +55,10 @@
     const flashToggle = document.getElementById('flash-toggle');
     const flashState = document.getElementById('flash-state');
     const contentsImage = document.getElementById('contents-image');
-    const scanned = document.getElementById('scanned');
+    let scanned = document.getElementById('scanned');
 
     //Keep track of the crates scanned so far and don't allow duplicates
-    const scannedCrates = new Set();
+    let scannedCrates = new Set();
 
     const crateDecoder = new CrateDecoder();
 
@@ -75,15 +75,40 @@
         scannedListItem.appendChild(scannedImage);
         crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode("  " + value.contents)));
         scanned.appendChild(scannedListItem);
+
+        //store all of the scanned crates into local storage
+        localStorage.setItem('cargo', JSON.stringify(Array.from(scannedCrates)));
+    }
+
+    //load from local storage
+    scannedCrates = new Set(JSON.parse(localStorage.getItem('cargo')));
+    console.log("SCANNED CRATES");
+    console.log(scannedCrates);
+    if (scannedCrates && scannedCrates.size > 0) {
+        const previousCrates = scannedCrates.entries();
+        for (const crate of previousCrates) {
+            console.log(crate);
+            addToScanned(crate[0]);
+        }
+    } else {
+        scannedCrates = new Set();
+    }
+
+    if (urlParams.has('reset')) {
+        localStorage.removeItem('cargo');
+        scannedCrates.clear();
+        scanned = document.createElement('ul');
     }
 
     //use the url with ?cargo to load test data into the app
-    console.log(urlParams.has('cargo'));
     if (urlParams.has('cargo')) {
         addToScanned('FAL11');
         addToScanned('KL_QR');
         addToScanned('CD_LM');
         addToScanned('AB_QR');
+
+        //store all of the scanned crates into local storage
+        localStorage.setItem('cargo', JSON.stringify(Array.from(scannedCrates)));
     }
 
     function setResult(result) {
