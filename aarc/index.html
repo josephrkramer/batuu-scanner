@@ -82,10 +82,10 @@
     console.log("SCANNED CRATES");
     console.log(scannedCrates);
     if (scannedCrates && scannedCrates.size > 0) {
-        const previousCrates = scannedCrates.keys();
+        const previousCrates = scannedCrates.entries();
         for (const crate of previousCrates) {
-            console.log(entry);
-            addToScanned(crate);
+            console.log(crate;
+            addToScanned(crate[0]);
         }
     } else {
         scannedCrates = new Set();
