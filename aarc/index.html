@@ -58,7 +58,7 @@
     const scanned = document.getElementById('scanned');
 
     //Keep track of the crates scanned so far and don't allow duplicates
-    const scannedCrates = new Set();
+    let scannedCrates = new Set();
 
     const crateDecoder = new CrateDecoder();
 
@@ -75,6 +75,14 @@
         scannedListItem.appendChild(scannedImage);
         crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode("  " + value.contents)));
         scanned.appendChild(scannedListItem);
+    }
+
+    //load from local storage
+    scannedCrates = JSON.parse(localStorage.getItem('cargo'));
+    scannedCrates.forEach(setResult)
+
+    if (urlParams.has('reset')) {
+        scannedCrates.clear();
     }
 
     //use the url with ?cargo to load test data into the app
@@ -104,6 +112,9 @@
         if (!scannedCrates.has(result.data)) {
             addToScanned(result.data);
         }
+
+        //store all of the scanned crates into local storage
+        localStorage.setItem('cargo', JSON.stringify(scannedCrates));
     }
 
     // ####### Web Cam Scanning #######
