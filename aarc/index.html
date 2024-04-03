@@ -55,6 +55,12 @@
     //Keep track of the crates scanned so far and don't allow duplicates
     const scannedCrates = new Set();
 
+    //TODO: remove this temporary loading of the backpack for testing
+    addToScanned('FAL11');
+    addToScanned('KL_QR');
+    addToScanned('CD_LM');
+    addToScanned('AB_QR');
+
     const crateDecoder = new CrateDecoder();
 
     function addToScanned(code) {
@@ -67,7 +73,7 @@
         scannedImage.style.maxWidth = '40px';
         crateDecoder.decode(code).then(value => scannedImage.src = value.image);
         scannedListItem.appendChild(scannedImage);
-        crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode(value.contents)));
+        crateDecoder.decode(code).then(value => scannedListItem.appendChild(document.createTextNode("  " + value.contents)));
         scanned.appendChild(scannedListItem);
     }
 
