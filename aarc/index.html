@@ -95,6 +95,7 @@
     }
 
     if (urlParams.has('reset')) {
+        localStorage.removeItem('cargo');
         scannedCrates.clear();
         scanned = document.createElement('ul');
     }
