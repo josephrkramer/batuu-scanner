@@ -80,7 +80,7 @@
     //load from local storage
     scannedCrates = JSON.parse(localStorage.getItem('cargo'));
     if (scannedCrates) {
-        scannedCrates.forEach(setResult)
+        scannedCrates.keys().forEach(setResult)
     } else {
         scannedCrates = new Set();
     }
